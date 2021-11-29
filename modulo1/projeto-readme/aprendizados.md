@@ -1,0 +1,2 @@
+# Aprendizados da semana
+Esta não é a minha primeira experiência com programação, mas é a primeira vez que sigo uma rotina de estudos sobre o tema. Aprendi a controlar o **git** sem interface gráfica e a navegar pelo meu computador por um terminal. Também conheci o aplicativo **Slack** que, mesmo com alguns problemas pontuais de funcionamento, ainda me surpreende pela ideia, por reunir tantas funções úteis tornando desnecessário qualquer outro meio de comunicação entre a turma e a staff do curso.
