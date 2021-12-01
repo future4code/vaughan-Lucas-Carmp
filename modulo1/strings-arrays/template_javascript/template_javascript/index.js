@@ -3,9 +3,9 @@
 //a. undefined
 //b. null
 //c. 11
-//d. array is not defined
-//e. array is not defined
-//f. array is not defined
+//d. 3
+//e. [3, 19,  5,  6,  7, 8,  9, 10, 11, 12, 13]
+//f. 9
 
 //exercício 2
 //SUBI NUM ÔNIBUS EM MIRROCOS 27
