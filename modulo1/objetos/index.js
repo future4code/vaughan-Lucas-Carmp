@@ -1,15 +1,15 @@
 //EXERCÍCIOS DE INTERPRETAÇÃO
 //exercício 1
 //letra a: 
-/* 
+ 
   Matheus Nachtergaele
    Virginia Cavendish
   canal: Globo, horario: 14h
-*/
+
 
 //exercício 2
 //letra a:
-/*
+
 {
 	nome: "Juca", 
 	idade: 3, 
@@ -25,7 +25,7 @@
 	idade: 3, 
 	raca: "SRD"
 }
-*/
+
 
 //letra b
 // os três pontos copiam o objeto referido para facilitar a adição de novos objetos que se refiram à mesma coisa que o original.
@@ -41,7 +41,7 @@
 //EXERCÍCIOS DE ESCRITA
 //exercício 1
 //letra a e b
-/* const comoChamar = {
+ const comoChamar = {
   nome: "Lucas",
   apelido: ['Pasche', 'Paschola', 'Paschão']
 }
@@ -53,13 +53,13 @@ const comoChamarNovo = {
 let chamar = () => {
   return `Eu sou ${comoChamarNovo.nome}, mas pode me chamar de: ${comoChamarNovo.apelido}.`
 }
-console.log(chamar(comoChamarNovo) ) */
+console.log(chamar(comoChamarNovo) ) 
 
 
 
 //exercício 2
 //letra a
-/* const mulher = {
+ const mulher = {
   nome: 'Fernanda',
   idade: 24,
   profissao: 'engenheira'
@@ -74,12 +74,12 @@ const homem = {
 const listaMulher = () => {
   return [mulher.nome, mulher.nome.length, mulher.idade, mulher.profissao, mulher.profissao.length]
 }
-console.log(listaMulher()) */
+console.log(listaMulher()) 
 
 
 //exercício 3
 //letra a
-/* var carrinho = []
+ var carrinho = []
 
 //letra b
 const fruta0 ={
@@ -103,7 +103,7 @@ preencheCarrinho(fruta0)
 preencheCarrinho(fruta1)
 preencheCarrinho(fruta2)
 
-console.log(carrinho) */
+console.log(carrinho) 
 
 
 
@@ -112,7 +112,7 @@ console.log(carrinho) */
 
 //DESAFIO 1
 
-/* const registro = () =>{
+ const registro = () =>{
   let nome = prompt('Qual o seu nome?')
   let idade = prompt('Quantos anos você tem?')
   let profissao = prompt('Qual a sua profissão?')
@@ -120,12 +120,12 @@ console.log(carrinho) */
   console.log(pessoaRegistrada)
   console.log(typeof(pessoaRegistrada))
 }
-registro() */
+registro() 
 
 
 
 //DESAFIO 2
-/* const primeiroFilme = {
+ const primeiroFilme = {
     anoDeLancamento: 1992,
     nome: 'Perfume de mulher'
 }
@@ -136,7 +136,7 @@ registro() */
   const cadastraFilme = (filme0, filme1) =>{
     return `O primeiro filme foi lançado antes do segundo? ${primeiroFilme.anoDeLancamento < segundoFilme.anoDeLancamento}`
 }
-  console.log(cadastraFilme(primeiroFilme, segundoFilme)) */
+  console.log(cadastraFilme(primeiroFilme, segundoFilme)) 
 
 
   //DESAFIO 3
