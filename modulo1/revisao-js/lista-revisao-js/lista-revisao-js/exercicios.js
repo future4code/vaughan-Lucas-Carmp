@@ -157,5 +157,8 @@ return consultas
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
-   
+    function compare(a, b){
+        return a.dataDaConsulta > b.dataDaConsulta
+    }
+return consultas.sort(compare)
 }
