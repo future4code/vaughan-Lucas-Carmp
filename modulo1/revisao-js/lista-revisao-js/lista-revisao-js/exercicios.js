@@ -52,14 +52,36 @@ function retornaMaiorNumero(array) {
 
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
-
+    let numerosComparados = {}
+    switch (retornaObjetoEntreDoisNumeros(num1, num2)){
+    case  num1 > num2: numerosComparados = {...numerosComparados, maiorNumero: num1}
+    break;
+    case num1 < num2: numerosComparados = {...numerosComparados, maiorNumero: num2}
+    break;
+    }
+    if (num1 > num2){
+        return {...numerosComparados, maiorDivisivelPorMenor: num1 % num2 === 0}
+    }else if (num2 > num1){
+        return {...numerosComparados, maiorDivisivelPorMenor: num2 % num1 === 0}
+    }
+    let subtracao = num1 - num2
+    if (subtracao >= 0){
+        return {...numerosComparados, diferenca: subtracao} 
+    }else if (subtracao < 0){
+        subtracao = num2 - num1
+        return {...numerosComparados, diferenca: subtracao} 
+    }
+    return numerosComparados
 }
 
 // EXERCÍCIO 08
 function retornaNPrimeirosPares(n) {
-   
+   let arrayPares = []
+   for (i = 0; arrayPares.length < n; i++){
+       i % 2 === 0 ? arrayPares.push(i) : null
+   }
+   return arrayPares
 }
-
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
 
