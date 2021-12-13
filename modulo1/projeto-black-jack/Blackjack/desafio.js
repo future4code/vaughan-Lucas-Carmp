@@ -20,9 +20,6 @@ const blackJack = () =>{
             userTxt[0].includes("A")  && userTxt.includes("A") ? userCards.splice(0, 2, comprarCarta(), comprarCarta()) : null
             
             
-            
-            
-            
             //creating cpu's hand
             const cpuCards = []
             cpuCards.push(comprarCarta())
@@ -48,22 +45,28 @@ const blackJack = () =>{
               return total;
             }
             
-            //step 9: drawing and showing some cards...
-            while (confirm(`Your cards are ${userTxt}. The CPU's unveiled card is ${cpuTxt[0]}. \n Do you want to draw a card?`)){
+            //step 9: drawing and showing some user cards... step 10: asking the user while his/her score is under 21
+            while (finalValue(userValues) < 21){
+               if (confirm(`Your cards are ${userTxt}. The CPU's unveiled card is ${cpuTxt[0]}. \n Do you want to draw a card?`)){
                let userAddedValues = []
                userAddedValues.push(comprarCarta())
                for (let element of userAddedValues){
                   userTxt.push(element.texto)
                   userValues.push(element.valor)
                }
+               //step 11: the cpu is drawing its cards... 
+               }else {
+               let cpuAddedValues = []
+               while (finalValue(cpuValues) < finalValue(userValues)){
+               cpuAddedValues.push(comprarCarta())
+               for (let element of cpuAddedValues){
+                  cpuTxt.push(element.texto)
+                  cpuValues.push(element.valor)
+               }
+               }
+               break
+               }
             } 
-
-            
-            
-            
-            
-            
-            
             
             
             //creating messages...
@@ -77,15 +80,19 @@ const blackJack = () =>{
             console.log(userCardValueText)
             console.log(cpuCardValueText)
             
-            if (finalValue(userValues) > finalValue(cpuValues)){
+            if (finalValue(userValues) > finalValue(cpuValues) && finalValue(userValues) <= 21){
                console.log(userWinText)
             }else if (finalValue(userValues) === finalValue(cpuValues)){
                console.log(drawText)
-            }else{
+            }else if (finalValue(cpuValues) > finalValue(userValues) && finalValue(cpuValues) <= 21){
                console.log(cpuWinText)
+            }else if (finalValue(userValues) > 21){
+               console.log(cpuWinText)
+            }else if (finalValue(cpuValues) > 21){
+               console.log(userWinText)
             }
    } else {
-   console.log('The game is over')
+   console.log('The game is over.')
 }
 }
 blackJack() 
