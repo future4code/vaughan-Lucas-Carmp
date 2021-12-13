@@ -20,11 +20,13 @@ function retornaArrayOrdenado(array) {
 
 // EXERCÍCIO 04
 function retornaNumerosPares(array) {
- return array.filter((element) => {
-    if (element % 2 === 0){
-        return element
+    let arrayPares = []
+    for(let element of array){
+        if (element % 2 === 0){
+            arrayPares.push(element)
+        }
     }
-  })
+    return arrayPares
 }
 
 // EXERCÍCIO 05
