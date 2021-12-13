@@ -82,10 +82,20 @@ function retornaNPrimeirosPares(n) {
    }
    return arrayPares
 }
+
 // EXERCÍCIO 09
 function classificaTriangulo(ladoA, ladoB, ladoC) {
-
-}
+    let equilatero = ladoA === ladoB && ladoA === ladoC
+    let escaleno = ladoA !== ladoB && ladoA !== ladoC
+    let isosceles = (ladoA === ladoB || ladoA === ladoC || ladoB === ladoC) && (ladoA !== ladoB || ladoA !== ladoC || ladoB !== ladoC)
+   if (equilatero){
+     return "Equilátero"
+   }else if (isosceles){
+     return "Isósceles"
+   }else if (escaleno){
+     return "Escaleno"
+   }
+   } 
 
 // EXERCÍCIO 10
 function retornaSegundoMaiorESegundoMenor(array) {
