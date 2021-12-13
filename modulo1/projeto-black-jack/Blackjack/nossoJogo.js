@@ -1,5 +1,5 @@
 
-/* const blackJack = () =>{
+   const blackJack = () =>{
    console.log('Welcome to Blackjack!')
    if (confirm('Start a new game?')){
             //creating user's hand
@@ -67,4 +67,4 @@
    console.log('The game is over')
 }
 }
-blackJack()  */
+blackJack()  
