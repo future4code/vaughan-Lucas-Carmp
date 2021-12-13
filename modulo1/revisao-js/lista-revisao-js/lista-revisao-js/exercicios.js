@@ -133,7 +133,15 @@ return naoPodeEntrar
 
 // EXERCÍCIO 14
 function retornaContasComSaldoAtualizado(contas) {
-
+    contas.forEach((item) =>{
+        let totalGasto = 0
+        item.compras.forEach((comprinha) =>{
+            totalGasto += comprinha
+        })
+    item.saldoTotal -= totalGasto
+    item.compras = []
+    })
+return contas
 }
 
 // EXERCÍCIO 15A
