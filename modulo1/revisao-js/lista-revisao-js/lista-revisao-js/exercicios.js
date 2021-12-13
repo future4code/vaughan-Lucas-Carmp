@@ -53,23 +53,14 @@ function retornaMaiorNumero(array) {
 // EXERCÍCIO 07
 function retornaObjetoEntreDoisNumeros(num1, num2) {
     let numerosComparados = {}
-    switch (retornaObjetoEntreDoisNumeros(num1, num2)){
-    case  num1 > num2: numerosComparados = {...numerosComparados, maiorNumero: num1}
-    break;
-    case num1 < num2: numerosComparados = {...numerosComparados, maiorNumero: num2}
-    break;
-    }
-    if (num1 > num2){
-        return {...numerosComparados, maiorDivisivelPorMenor: num1 % num2 === 0}
-    }else if (num2 > num1){
-        return {...numerosComparados, maiorDivisivelPorMenor: num2 % num1 === 0}
-    }
     let subtracao = num1 - num2
-    if (subtracao >= 0){
-        return {...numerosComparados, diferenca: subtracao} 
-    }else if (subtracao < 0){
+    if (num1 > num2){
+        return {...numerosComparados, maiorNumero: num1, maiorDivisivelPorMenor: num1 % num2 === 0, diferenca: subtracao}
+    }else if (num2 > num1){
         subtracao = num2 - num1
-        return {...numerosComparados, diferenca: subtracao} 
+        return {...numerosComparados, maiorNumero: num2, maiorDivisivelPorMenor: num2 % num1 === 0, diferenca: subtracao}
+    }else if (num1 === num2){
+        return {...numerosComparados, maiorNumero: num2, maiorDivisivelPorMenor: num2 % num1 === 0, diferenca: subtracao}
     }
     return numerosComparados
 }
