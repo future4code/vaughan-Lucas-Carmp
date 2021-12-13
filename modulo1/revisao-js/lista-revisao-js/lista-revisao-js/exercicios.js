@@ -146,8 +146,14 @@ return contas
 
 // EXERCÍCIO 15A
 function retornaArrayOrdenadoAlfabeticamente(consultas) {
-  
+    consultas.sort(function(x, y){
+        let a = x.nome.toUpperCase(),
+            b = y.nome.toUpperCase()
+        return a == b ? 0 : a > b ? 1 : -1
+    })
+return consultas
 }
+
 
 // EXERCÍCIO 15B
 function retornaArrayOrdenadoPorData(consultas) {
