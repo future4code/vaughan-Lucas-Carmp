@@ -110,12 +110,19 @@ function retornaPessoaAnonimizada(pessoa) {
 
 // EXERCÍCIO 13A
 function retornaPessoasAutorizadas(pessoas) {
-   
-}
+    const podeEntrar = pessoas.filter((item) =>{
+        for (i = 0; i < pessoas.length; i++){
+           if (item.altura >= 1.5 && item.idade > 14 && item.idade < 60){
+             return item
+         }
+    }})
+ return podeEntrar
+ }
+ 
 
 // EXERCÍCIO 13B
 function retornaPessoasNaoAutorizadas(pessoas) {
-  
+
 }
 
 // EXERCÍCIO 14
