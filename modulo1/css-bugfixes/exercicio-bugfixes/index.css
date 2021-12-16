@@ -119,6 +119,12 @@ td button:hover{
     height: 100px;
 }
 
+#search-field{
+border-top: 0px;
+border-right: 0px;
+border-left: 0px;
+border-width: thick;
+}
 
 #back-button {
     background-color: white;
