@@ -1,0 +1,21 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+.header{
+    background-color: black;
+    color: white;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.title{
+    position: relative;
+    text-align: center;
+    line-height: 95px;
+}
+
+
+
