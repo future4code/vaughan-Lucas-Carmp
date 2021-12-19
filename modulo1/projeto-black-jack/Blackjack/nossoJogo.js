@@ -1,4 +1,4 @@
-
+/* 
    const blackJack = () =>{
    console.log('Welcome to Blackjack!')
    if (confirm('Start a new game?')){
@@ -67,4 +67,4 @@
    console.log('The game is over')
 }
 }
-blackJack()  
+blackJack()   */
