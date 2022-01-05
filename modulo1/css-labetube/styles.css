@@ -59,3 +59,12 @@ footer{
     align-items: center;
     justify-content: center;
 }
+
+@media screen  and (max-device-width : 480px) {
+    .videos-container{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    }
+    
