@@ -2,16 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 
 import {IconeComContador} from '../IconeComContador/IconeComContador'
-
-
 import iconeCoracaoBranco from '../../img/favorite-white.svg'
 import iconeCoracaoPreto from '../../img/favorite.svg'
 import iconeComentario from '../../img/comment_icon.svg'
-import iconeMarcadorBranco from '../../img/bookmark-white.svg'
-import iconeMarcadorPreto from '../../img/bookmark-black.svg'
-import iconeEnviarBranco from '../../img/send-white.svg'
-import iconeEnviarPreto from '../../img/send-black.svg'
+import { IconeSalvar } from '../IconeSalvar/IconeSalvar'
+import saveLogoWhite from '../../img/bookmark-white.svg'
+import saveLogoBlack from '../../img/bookmark-black.svg'
+import sendLogoWhite from '../../img/send-white.svg'
+import sendLogoBlack from '../../img/send-black.svg'
 import {SecaoComentario} from '../SecaoComentario/SecaoComentario'
+import { IconeEnviar } from '../IconeEnviar/IconeEnviar'
 
 const PostContainer = styled.div`
   border: 1px solid gray;
@@ -53,7 +53,8 @@ class Post extends React.Component {
     numeroCurtidas: 0,
     comentando: false,
     numeroComentarios: 0,
-    salvo: false
+    salvo: false,
+    enviando: false
   }
   
   onClickSalvar = () => {
@@ -62,6 +63,11 @@ class Post extends React.Component {
     })
   }
   
+  onClickEnviar = () => {
+    this.setState({
+      enviando: !this.state.enviando
+    })
+  }
   
   onClickCurtida = () => {
     this.setState({
@@ -73,10 +79,6 @@ class Post extends React.Component {
       this.setState({numeroCurtidas: this.state.numeroCurtidas - 1})
     }
   }
-
-
-
-
 
   onClickComentario = () => {
     this.setState({
@@ -92,11 +94,18 @@ class Post extends React.Component {
   }
 
   render() {
-    let iconeSalvar
-    if(this.state.salvo){
-      iconeSalvar = iconeMarcadorPreto
+    let iconeSalvo
+    if(this.state.salvo) {
+      iconeSalvo = saveLogoBlack
     } else {
-      iconeSalvar = iconeMarcadorBranco
+      iconeSalvo = saveLogoWhite
+    }
+
+    let iconeEnviado
+    if(this.state.enviando) {
+      iconeEnviado = sendLogoBlack;
+    } else {
+      iconeEnviado = sendLogoWhite
     }
     
     
@@ -127,6 +136,17 @@ class Post extends React.Component {
           icone={iconeCurtida}
           onClickIcone={this.onClickCurtida}
           valorContador={this.state.numeroCurtidas}
+        />
+
+
+        <IconeSalvar 
+          icone={iconeSalvo}
+          onClickSalvar={this.onClickSalvar}
+        />
+
+        <IconeEnviar
+          icone={iconeEnviado}
+          onClickEnviar={this.onClickEnviar}
         />
 
         <IconeComContador
