@@ -54,7 +54,8 @@ class Post extends React.Component {
     comentando: false,
     numeroComentarios: 0,
     salvo: false,
-    enviando: false
+    enviando: false,
+    
   }
   
   onClickSalvar = () => {
@@ -89,7 +90,8 @@ class Post extends React.Component {
   aoEnviarComentario = () => {
     this.setState({
       comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1
+      numeroComentarios: this.state.numeroComentarios + 1,
+      comentario: ""
     })
   }
 
