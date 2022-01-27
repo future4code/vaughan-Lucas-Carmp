@@ -29,18 +29,18 @@ export class UsersList extends React.Component {
       });
   };
 
-  deletaUsuario = () => {
+  deletaUsuario = (id) => {
       axios.delete(
-          "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/:id",
+          `https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/${id}`,
           {
             headers: {Authorization: "lucas-pasche-moreira"},
           }
       )
       .then((response) => {
           alert('Usuário excluído.')
-        this.setState({
-
-        })
+        this.puxaLista()
+      }).catch((error) => {
+        alert('Ocorreu um erro. tente novamente..')
       })
   }
   
@@ -49,12 +49,13 @@ export class UsersList extends React.Component {
     const readyToJsx = this.state.users.map((user) => {
       return <div className="container-nome-botao">
                 <li key={user.id}>{user.name}</li>
-                <button onClick={this.deletaUsuario}>Deletar</button>
+                <button onClick={() => this.deletaUsuario(user.id)}>Deletar</button>
             </div>;
     });
     return( 
     <div>
         {readyToJsx}
+        
     </div>
     )
   }
