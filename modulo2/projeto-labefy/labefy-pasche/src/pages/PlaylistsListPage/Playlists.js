@@ -1,8 +1,17 @@
 import React from "react";
 import axios from "axios";
-import { PlaylistCard } from "./styled";
+import {
+  InputCard,
+  PlaylistCard,
+  PlaylistScreenCard,
+  PlaylistInput,
+  EachPlaylist,
+  DeleteButton,
+  CreatePlaylistButton,
+  MainScreentButton,
+  CardTitle,
+} from "./styled";
 import { BASE_URL } from "../../constants/urls";
-
 
 export default class Playlists extends React.Component {
   state = {
@@ -34,7 +43,7 @@ export default class Playlists extends React.Component {
       });
       this.setState({ playlistName: "" });
     } catch (error) {
-      return error.response;
+      alert("This playlist already exists. Choose other name.");
     }
   };
 
@@ -49,43 +58,55 @@ export default class Playlists extends React.Component {
     }
   };
 
-    // makes an API DELETE query which deletes the playlists list
+  // makes an API DELETE query which deletes the playlists list
   deletePlaylist = async (id) => {
     const headers = { headers: { Authorization: "lucas-pasche-moreira" } };
     try {
-      const exclusionResponse = await axios.delete(`${BASE_URL}/${id}`, headers);
-      this.getPlaylists()
-    }catch (error){
-      return error.response
+      const exclusionResponse = await axios.delete(
+        `${BASE_URL}/${id}`,
+        headers
+      );
+    } catch (error) {
+      return error.response;
     }
-  }
-
-
-
-
+  };
 
   render() {
     const renderedPlaylists = this.state.playlists.map((item) => {
       return (
-        <div>
-        <PlaylistCard onClick={() => this.props.goToDetails(item.id)} key={item.id}>
-          <b>{item.name}</b>
-        </PlaylistCard>
-        <button onClick={() => this.deletePlaylist(item.id)}>Delete</button>
-        </div>
+        <EachPlaylist>
+          <PlaylistCard
+            onClick={() => this.props.goToDetails(item.id)}
+            key={item.id}
+          >
+            <b>{item.name}</b>
+          </PlaylistCard>
+          <DeleteButton onClick={() => this.deletePlaylist(item.id)}>
+            Delete
+          </DeleteButton>
+        </EachPlaylist>
       );
     });
 
     return (
-      <div>
-        <h1>Playlists</h1>
-        <input value={this.state.playlistName} onChange={this.createPlaylist} />
-        <button onClick={this.registerPlaylist}>Create playlist</button>
-        <div>
-          {renderedPlaylists}
-        </div>
-        <button onClick={this.props.goToMainScreen}>Main screen</button>
-      </div>
+      <PlaylistScreenCard>
+        <CardTitle>Playlists</CardTitle>
+        <InputCard>
+          <PlaylistInput
+            type="text"
+            value={this.state.playlistName}
+            onChange={this.createPlaylist}
+            placeholder="Choose a name"
+          />
+          <CreatePlaylistButton onClick={this.registerPlaylist}>
+            Create playlist
+          </CreatePlaylistButton>
+        </InputCard>
+        <div>{renderedPlaylists}</div>
+        <MainScreentButton onClick={this.props.goToMainScreen}>
+          Main screen
+        </MainScreentButton>
+      </PlaylistScreenCard>
     );
   }
 }

@@ -1,9 +1,11 @@
 import React from "react";
-import styled from "styled-components";
-import axios from "axios";
+import "./App.css";
 import Details from "./pages/PlaylistsDetailsPage/Details";
 import Playlists from "./pages/PlaylistsListPage/Playlists";
 import MainScreen from "./pages/MainScreen/MainScreen";
+import { Labefy } from "./styled";
+
+
 
 export default class App extends React.Component {
   state = {
@@ -50,6 +52,8 @@ export default class App extends React.Component {
   };
 
   render() {
-    return <div>{this.showPage()}</div>;
+    return <Labefy>
+      {this.showPage()}
+      </Labefy>
   }
 }
