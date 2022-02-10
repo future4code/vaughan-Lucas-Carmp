@@ -1,12 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import MatchesScreen from "../matches-screen/MatchesScreen";
+import MatchesScreen from "./pages/matches-screen/MatchesScreen";
 import Box from "@mui/material/Box";
 import { Header, Title } from "./background";
 import axios from "axios";
-import { BASE_URL } from "../src/constants/base-url"
+import { BASE_URL } from "./constants/base-url"
 import "./App.css";
-import MainScreen from "./components/main-screen/MainScreen";
+import MainScreen from "./pages/main-screen/MainScreen";
 
 function App() {
   const [currentPerson, setCurrentPerson] = useState([]);
@@ -93,7 +93,7 @@ function App() {
         <Header>
           <Title>astromatch</Title>
         </Header>
-        {currentPage()}
+  
       </Box>
     </div>
   );

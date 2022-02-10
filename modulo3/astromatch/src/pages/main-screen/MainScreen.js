@@ -4,12 +4,12 @@ import LocalFireDepartmentSharpIcon from "@mui/icons-material/LocalFireDepartmen
 import AcUnitSharpIcon from "@mui/icons-material/AcUnitSharp";
 import React from "react";
 
-import PersonCard from "../person-card/PersonCard";
+import PersonCard from "../../components/person-card/PersonCard";
 import { ButtonsContainer } from "./styled";
 
 const MainScreen = (props) => {
   return (
-    <>
+    <div>
       <PersonCard  />
       <ButtonsContainer>
         <IconButton
@@ -36,7 +36,7 @@ const MainScreen = (props) => {
           />
         </IconButton>
       </ButtonsContainer>
-    </>
+    </div>
   );
 };
 
