@@ -4,7 +4,7 @@ import MatchesScreen from "../matches-screen/MatchesScreen";
 import Box from "@mui/material/Box";
 import { Header, Title } from "./background";
 import axios from "axios";
-import { BASE_URL } from "../../constants/base-url";
+import { BASE_URL } from "../src/constants/base-url"
 import "./App.css";
 import MainScreen from "./components/main-screen/MainScreen";
 
