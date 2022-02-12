@@ -11,12 +11,12 @@ import MainScreen from "./pages/main-screen/MainScreen";
 function App() {
   const [currentPerson, setCurrentPerson] = useState([]);
   const [myMatches, setMyMatches] = useState([]);
-  const [page, setPage] = useState(false);
+  const [page, setPage] = useState('main-screen');
 
   //block that ensures that the corret screen is being shown
   const currentPage = () => {
     switch (page) {
-      case true:
+      case 'my-matches':
         return <MatchesScreen setShownPage={setShownPage()}/>;
       default:
         return (
@@ -78,7 +78,7 @@ function App() {
     getCurrentPerson();
   }, []);
   return (
-    <div className="App">
+    <div className="page">
       <Box
         sx={{
           display: "flex",

@@ -10,7 +10,7 @@ export const Card = styled.div`
 `;
 
 export const ProfilePhoto = styled.img`
-  width: 10%;
+  width: 100%;
 `;
 
 export const Info = styled.div`

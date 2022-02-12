@@ -2,10 +2,11 @@ import { IconButton } from "@mui/material";
 import PlaylistAddCheckSharpIcon from "@mui/icons-material/PlaylistAddCheckSharp";
 import LocalFireDepartmentSharpIcon from "@mui/icons-material/LocalFireDepartmentSharp";
 import AcUnitSharpIcon from "@mui/icons-material/AcUnitSharp";
-import React from "react";
+
 
 import PersonCard from "../../components/person-card/PersonCard";
 import { ButtonsContainer } from "./styled";
+import React from "react";
 
 const MainScreen = (props) => {
   return (
