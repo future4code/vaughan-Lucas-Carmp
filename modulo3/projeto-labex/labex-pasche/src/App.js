@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import "./App.css";
+import NoLogoutHeader from "./components/header/NoLogoutHeader";
+
+import AdminHomePage from "./pages/admin-home-page/AdminHomePage";
+import ApplicationFormPage from "./pages/application-form-page/ApplicationFormPage";
+import CreateTripsPage from "./pages/create-trip-page/CreateTripPage";
+import HomePage from "./pages/home-page/HomePage";
+import ListTripsPage from "./pages/list-trips-page/ListTripsPage";
+import LoginPage from "./pages/login-page/LoginPage";
+import TripDetailsPage from "./pages/trip-details.page/TripDetailsPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <NoLogoutHeader />
+        <Routes>
+          <Route path="/" element={<HomePage/>} />
+          <Route path="/trips/list" element={<ListTripsPage/>} />
+          <Route path="/trips/application" element={<ApplicationFormPage/>} />
+          <Route path="/login" element={<LoginPage/>} />
+          <Route path="/admin/trips/list" element={<AdminHomePage/>} />
+          <Route path="/admin/trips/:id" element={<TripDetailsPage/>} />
+          <Route path="/admin/trips/create" element={<CreateTripsPage/>} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
