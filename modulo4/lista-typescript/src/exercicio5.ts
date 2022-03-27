@@ -14,7 +14,7 @@ const users = [
 ];
 
 const userFilter = (array: user[]): string[] => {
-  const selectedUsers = array
+  const selectedUsers: string[] = array
     .filter((item) => {
       return item.role === "admin";
     })

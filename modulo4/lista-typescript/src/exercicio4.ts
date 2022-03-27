@@ -22,7 +22,7 @@ const funcionarios = [
   ];
 
 const customFilter = (array: funcionario[]): funcionario[] => {
-    const selection = array.filter((item)=>{
+    const selection: funcionario[] = array.filter((item)=>{
         return item.setor === Setores.MARKETING && item.presencial === true
     });
 
