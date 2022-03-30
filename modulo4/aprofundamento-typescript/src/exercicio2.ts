@@ -13,8 +13,6 @@ function obterEstatisticas(numeros: number[]): object  {
         soma += num;
     };
 
-
-
     const estatisticas: estatisticas = {
         maior: numerosOrdenados[numeros.length - 1],
         menor: numerosOrdenados[0],
@@ -23,5 +21,3 @@ function obterEstatisticas(numeros: number[]): object  {
 
     return estatisticas
 };
-
-console.log(obterEstatisticas([1,50,765,1000]))
