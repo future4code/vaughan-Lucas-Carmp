@@ -1,8 +1,0 @@
-GET  http://localhost:3003/users HTTP/1.1
-content-type: application/json
-
-# {
-#     "name": "Hazel Pasche",
-#     "CPF": 39276262530,
-#     "birth": "03/06/2029"
-# }
