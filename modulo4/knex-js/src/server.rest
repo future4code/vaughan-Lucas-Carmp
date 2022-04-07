@@ -1,0 +1,4 @@
+GET http://localhost:3003/movie/search?query=e HTTP/1.1
+content-type: application/json
+
+
