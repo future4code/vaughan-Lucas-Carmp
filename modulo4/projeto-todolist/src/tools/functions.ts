@@ -51,6 +51,21 @@ export const getUserById = async (id: string): Promise<any> => {
   return response[0];
 };
 
+//Gets task by id
+export const getTaskById = async (id: string): Promise<any> => {
+  const response = await connection("Tasks").select(
+    "task_id", 
+    "task_title",
+    "task_description",
+    "task_status",
+    "task_deadline",
+    "task_creator"
+  )
+  .where("task_id", id);
+
+  return response[0];
+};
+
 //Edit user
 export const editUser = async (
   id: string,

@@ -2,6 +2,7 @@ import {
   createTask,
   createUser,
   editUser,
+  getTaskById,
   getUserById,
   getUsers,
 } from "./tools/functions";
@@ -105,6 +106,39 @@ app.get("/users/:id", async (req: Request, res: Response): Promise<any> => {
   } catch (error: any) {
     switch (error.message) {
       case "User not found.":
+        res.status(404).send(error.message);
+        break;
+      default:
+        res.status(500).send("Something bad happened. Please contact support.");
+    }
+  }
+});
+
+//Gets task by id
+app.get("/tasks/:id", async (req: Request, res: Response): Promise<any> => {
+  try {
+    const tasks = await connection("Tasks").select();
+    const id: string = req.params.id;
+
+    const idList = tasks.map((task) => {
+      return task.task_id;
+    });
+
+    if (!idList.includes(id)) {
+      throw new Error("Task not found.");
+    }
+
+    const result = await getTaskById(id);
+
+    const formattedDeadline = result.task_deadline
+      .toLocaleString("pt-BR")
+      .split(" ")
+      .splice(0, 1)
+      .join();
+    res.status(200).send({ ...result, task_deadline: formattedDeadline });
+  } catch (error: any) {
+    switch (error.message) {
+      case "Task not found.":
         res.status(404).send(error.message);
         break;
       default:
