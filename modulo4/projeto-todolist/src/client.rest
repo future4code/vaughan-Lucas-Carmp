@@ -1,4 +1,10 @@
-GET  http://localhost:3003/tasks/1649473261678 HTTP/1.1
+PATCH   http://localhost:3003/tasks/status HTTP/1.1
 content-type: application/json
+
+
+{
+  "id": [1649632786655],
+  "status": "done"
+}
 
 
