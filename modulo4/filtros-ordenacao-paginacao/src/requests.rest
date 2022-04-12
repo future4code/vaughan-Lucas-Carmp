@@ -1,7 +1,18 @@
-POST http://localhost:3003 HTTP/1.1
+// 1 Letra A: Search users by name
+GET  http://localhost:3003/users?name=amaNDA HTTP/1.1
 content-type: application/json
 
-{
-    "name": "sample",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
-}
+###
+
+//1 Letra B: Search by type
+GET  http://localhost:3003/users/type?type=teA HTTP/1.1
+content-type: application/json
+
+###
+
+GET  http://localhost:3003/users/type?type=oPeRaTiOnS HTTP/1.1
+content-type: application/json
+# {
+#     "name": "sample",
+#     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+# }
