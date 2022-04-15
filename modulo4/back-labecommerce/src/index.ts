@@ -1,7 +1,15 @@
 import express, { Express, Request, response, Response } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
-import { getItems, getUsers, registerItem, registerUser, user } from "./functions";
+import {
+  getItems,
+  getPurchases,
+  getUsers,
+  postPurchase,
+  registerItem,
+  registerUser,
+  user,
+} from "./functions";
 
 const app: Express = express();
 app.use(express.json());
@@ -47,6 +55,17 @@ app.post("/products", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+//Register a purchase
+app.post("/purchases", async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { user_id, item_id, quantity } = req.body;
+    await postPurchase(user_id, item_id, quantity);
+    res.status(201).send("Purchase registered.");
+  } catch (error) {
+    res.status(500).send("Unexpected error. Contact support.");
+  }
+});
+
 //Get all users
 app.get("/users", async (req: Request, res: Response): Promise<void> => {
   try {
@@ -68,6 +87,20 @@ app.get("/products", async (req: Request, res: Response): Promise<void> => {
     res.status(500).send("Unexpected error. Contact support.");
   }
 });
+
+//Get purchases
+app.get(
+  "/users/:userId/purchases",
+  async (req: Request, res: Response): Promise<any> => {
+    try {
+      const userId = req.params.userId;
+      const response = await getPurchases(userId);
+      res.status(200).send(response);
+    } catch (error) {
+      res.status(500).send("Unexpected error. Contact support.");
+    }
+  }
+);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {

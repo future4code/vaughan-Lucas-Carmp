@@ -15,6 +15,13 @@ export type item = {
   image_url: string;
 };
 
+export type purchase = {
+  id: string;
+  item_id: string;
+  quantity: number;
+  total_price: number;
+};
+
 //Register an user
 export const registerUser = async (
   name: string,
@@ -30,6 +37,7 @@ export const registerUser = async (
   });
 };
 
+//Register an item
 export const registerItem = async (
   name: string,
   price: number,
@@ -44,6 +52,26 @@ export const registerItem = async (
   });
 };
 
+//Register a purchase
+export const postPurchase = async (
+  userId: string,
+  itemId: string,
+  quantity: number
+): Promise<void> => {
+  const id = random_id();
+  const source: any = await connection("labecommerce_products")
+    .select("price")
+    .where("id", itemId);
+  const price = source[0].price;
+  await connection("labecommerce_purchases").insert({
+    id: id,
+    user_id: userId,
+    item_id: itemId,
+    quantity: quantity,
+    total_price: (quantity * price).toFixed(2),
+  });
+};
+
 //Get all users
 export const getUsers = async (): Promise<user[]> => {
   const users = await connection("labecommerce_users");
@@ -54,4 +82,13 @@ export const getUsers = async (): Promise<user[]> => {
 export const getItems = async (): Promise<item[]> => {
   const items = await connection("labecommerce_products");
   return items;
+};
+
+//Get purchases
+export const getPurchases = async (userId: string): Promise<purchase[]> => {
+  const response = await connection("labecommerce_purchases")
+    .select("id", "item_id", "quantity", "total_price")
+    .where("user_id", userId);
+
+  return response;
 };
