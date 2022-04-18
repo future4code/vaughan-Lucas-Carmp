@@ -6,6 +6,7 @@ import {
   getPurchases,
   getUsers,
   postPurchase,
+  purchase,
   registerItem,
   registerUser,
   user,
@@ -77,12 +78,24 @@ app.get("/users", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-//Get all users
+//Get all products
 app.get("/products", async (req: Request, res: Response): Promise<void> => {
   try {
-    const response = await getItems();
+    const sortTerm = req.query.order as string;
+    const searchTerm = req.query.search as string;
+    if (sortTerm && !searchTerm) {
+      const response = await getItems(sortTerm);
 
-    res.status(200).send(response);
+      res.status(200).send(response);
+    } else if (!sortTerm && searchTerm) {
+      const response = await getItems(undefined, searchTerm);
+
+      res.status(200).send(response);
+    } else {
+      const response = await getItems();
+
+      res.status(200).send(response);
+    }
   } catch (error) {
     res.status(500).send("Unexpected error. Contact support.");
   }

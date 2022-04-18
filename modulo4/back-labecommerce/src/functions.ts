@@ -1,3 +1,4 @@
+import { forEachChild } from "typescript";
 import connection from "./connection";
 import { random_id } from "./tools/idGenerator";
 
@@ -6,6 +7,7 @@ export type user = {
   name: string;
   email: string;
   password: string;
+  purchases?: purchase;
 };
 
 export type item = {
@@ -73,22 +75,41 @@ export const postPurchase = async (
 };
 
 //Get all users
-export const getUsers = async (): Promise<user[]> => {
-  const users = await connection("labecommerce_users");
-  return users;
+export const getUsers = async (): Promise<any> => {
+  const source: user[] = await connection("labecommerce_users");
+
+  return source;
 };
 
 //Get all products
-export const getItems = async (): Promise<item[]> => {
-  const items = await connection("labecommerce_products");
-  return items;
+export const getItems = async (
+  sortTerm?: string,
+  searchTerm?: string
+): Promise<item[]> => {
+  if (sortTerm && !searchTerm) {
+    const items = await connection("labecommerce_products").orderBy(
+      "name",
+      sortTerm
+    );
+    return items;
+  } else if (!sortTerm && searchTerm) {
+    const items = await connection("labecommerce_products").whereILike(
+      "name",
+      `%${searchTerm}%`
+    );
+    return items;
+  } else {
+    const items = await connection("labecommerce_products");
+    return items;
+  }
 };
 
 //Get purchases
 export const getPurchases = async (userId: string): Promise<purchase[]> => {
-  const response = await connection("labecommerce_purchases")
-    .select("id", "item_id", "quantity", "total_price")
-    .where("user_id", userId);
+  const response = await connection("labecommerce_purchases").where(
+    "user_id",
+    userId
+  );
 
   return response;
 };

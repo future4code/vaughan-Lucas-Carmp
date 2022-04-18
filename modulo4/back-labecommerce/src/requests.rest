@@ -36,7 +36,7 @@ content-type: application/json
 
 ###
 //Get all products
-GET http://localhost:3003/products HTTP/1.1
+GET http://localhost:3003/products?search=xi HTTP/1.1
 content-type: application/json
 
 ###
