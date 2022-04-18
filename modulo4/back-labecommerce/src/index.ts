@@ -6,10 +6,8 @@ import {
   getPurchases,
   getUsers,
   postPurchase,
-  purchase,
   registerItem,
-  registerUser,
-  user,
+  registerUser
 } from "./functions";
 
 const app: Express = express();
