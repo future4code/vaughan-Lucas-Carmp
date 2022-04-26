@@ -1,5 +1,4 @@
 import * as jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 
 export type authenticationData = {
   id: string;
