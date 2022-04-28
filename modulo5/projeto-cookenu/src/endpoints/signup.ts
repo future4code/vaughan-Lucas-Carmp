@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { BaseDatabase } from "../data/BaseDatabase";
 import { UserDatabase } from "../data/UserDataBase";
 import { User } from "../entities/User";
 import { Authenticator } from "../services/Authenticator";
@@ -14,7 +13,9 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
 
     if (!name || !email || !password || !role) {
       res.statusCode = 422;
-      throw new Error("Please fill in fields 'name', 'email', 'password' and 'role' ('NORMAL' or 'ADMIN').");
+      throw new Error(
+        "Please fill in fields 'name', 'email', 'password' and 'role' ('NORMAL' or 'ADMIN')."
+      );
     }
 
     const newUser = new User(id, name, email, hash, role);
@@ -27,8 +28,8 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
   } catch (error: any) {
     if (res.statusCode === 200) {
       res.status(500).send("Internal server error.");
-    }else{
-        res.send({message: error.message})
+    } else {
+      res.send({ message: error.message });
     }
   }
 };

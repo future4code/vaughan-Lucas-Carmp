@@ -1,6 +1,6 @@
 export enum USER_ROLES {
-    NORMAL = "NORMAL",
-    ADMIN = "ADMIN"
+  NORMAL = "NORMAL",
+  ADMIN = "ADMIN",
 }
 
 export class User {
@@ -15,16 +15,24 @@ export class User {
   public getId = () => {
     return this.id;
   };
+
   public getName = () => {
     return this.name;
   };
+
   public getEmail = () => {
     return this.email;
   };
+
   public getPassword = () => {
     return this.password;
   };
+
   public getRole = () => {
     return this.role;
+  };
+
+  static toUserModel = (data: any): User => {
+    return new User(data.id, data.name, data.email, data.password, data.role);
   };
 }
