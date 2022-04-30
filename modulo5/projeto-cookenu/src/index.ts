@@ -1,5 +1,6 @@
 import { app } from "./app";
 import { createRecipe } from "./endpoints/createRecipe";
+import { getRecipeDetailsById } from "./endpoints/getRecipeDetailsById";
 import { getSelfProfile } from "./endpoints/getSelfProfile";
 import { getUserDetailsById } from "./endpoints/getUserDetailsById";
 import { login } from "./endpoints/login";
@@ -19,3 +20,6 @@ app.get("/user/profile", getSelfProfile);
 
 //Get user details by id
 app.get("/user/:id", getUserDetailsById);
+
+//Get recipe details by id
+app.get("/recipe/:id", getRecipeDetailsById);

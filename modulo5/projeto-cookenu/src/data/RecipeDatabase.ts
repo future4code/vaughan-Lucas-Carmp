@@ -14,4 +14,16 @@ export class RecipeDatabase extends BaseDatabase {
       throw new Error(error.sqlMessage || error.message);
     }
   };
+
+  public getRecipeDetails = async (id: string): Promise<any> => {
+    try {
+      const details = await BaseDatabase.connection("cookenu_Recipes")
+        .where({ id })
+        .select("id", "title", "description", "created_at");
+
+      return details[0];
+    } catch (error: any) {
+      throw new Error(error.sqlMessage || error.message);
+    }
+  };
 }
