@@ -1,0 +1,33 @@
+h1 {
+    color: blueviolet;
+}
+p{
+    color: darkcyan; font-size: medium;
+}
+a{
+    color: bisque;
+}
+ul{
+    color: gold;
+}
+div{
+    color: indigo;
+}
+button{
+    color: rgb(36, 167, 167);
+}
+.titulo{
+    color: brown; font-size:xx-large;
+}
+#fender{
+    image-orientation:flip;
+}
+#vendas{
+    color:black; font-size: larger;
+}
+#historico{
+    color:black; font-size:larger
+}
+#produto{
+    color:darkgoldenrod; font-size: x-large;
+}

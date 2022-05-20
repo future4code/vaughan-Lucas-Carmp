@@ -1,0 +1,17 @@
+{
+	"info": {
+		"_postman_id": "10665505-ec24-4b33-bfbe-6fc35f5c9a0a",
+		"name": "minha primeira vez",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
