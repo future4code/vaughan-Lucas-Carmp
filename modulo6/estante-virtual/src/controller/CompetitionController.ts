@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { CompetitionBusiness } from "../business/CompetitionBusiness";
+import { Competition } from "../model/Competition";
 import { IdGenerator } from "../services/generateId";
 import { CompetitionDTO } from "../types/DTO/CompetitionDTO";
+import { UpdateCompetitionStatusDTO } from "../types/DTO/UpdateCompetitionStatusDTO";
 
 export class CompetitionController {
   constructor(
@@ -22,10 +24,30 @@ export class CompetitionController {
 
       await this.competitionBusiness.register(competitionInput);
 
-      res.status(201).send("Competition created.")
+      res.status(201).send({ message: "Competition created." });
     } catch (error: any) {
-        const {statusCode, message} = error
-        res.status(statusCode || 400).send({message})
+      const { statusCode, message } = error;
+      res.status(statusCode || 400).send({ message });
+    }
+  };
+
+  public updateCompetitionStatus = async (
+    req: Request,
+    res: Response
+  ): Promise<void> => {
+    try {
+      const { id, status } = req.body;
+      const updateCompetitionInput: UpdateCompetitionStatusDTO = {
+        id,
+        status,
+      };
+      await this.competitionBusiness.updateCompetitionStatus(
+        updateCompetitionInput
+      );
+      res.status(202).send({ message: "Competition status updated." });
+    } catch (error: any) {
+      const { statusCode, message } = error;
+      res.status(statusCode || 400).send({ message });
     }
   };
 }

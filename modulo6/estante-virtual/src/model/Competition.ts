@@ -21,8 +21,4 @@ export class Competition {
   public getIsFinished = () => {
     return this.isFinished;
   };
-
-  public setIsFinished = () => {
-    this.isFinished = !this.isFinished;
-  };
 }

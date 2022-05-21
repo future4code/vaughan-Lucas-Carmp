@@ -12,3 +12,4 @@ const competitionController = new CompetitionController(
 );
 
 competitionRouter.post("/register", competitionController.register);
+competitionRouter.patch("/update", competitionController.updateCompetitionStatus);
