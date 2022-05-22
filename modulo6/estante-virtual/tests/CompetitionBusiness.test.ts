@@ -138,6 +138,7 @@ describe("Update competition test", ()=>{
       };
 
       await competitionBusinessMock.updateCompetitionStatus(updateCompetitionMock);
+      expect(competitionBusinessMock.updateCompetitionStatus).toBeCalled()
     } catch (error) {
       if (error instanceof CustomError) {
         console.log(error)

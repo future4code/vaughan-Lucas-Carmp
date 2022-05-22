@@ -16,7 +16,7 @@ export class ResultBusiness {
       const { id, competition, athlete, value, unit } = result;
 
       if (!competition || !athlete || !value || !unit) {
-        throw new CustomError(422, "Please fill in all fields");
+        throw new CustomError(422, "Please fill in all fields.");
       }
 
       if (unit.toLowerCase() !== "s" && unit.toLowerCase() !== "m") {
@@ -59,9 +59,54 @@ export class ResultBusiness {
         throw new CustomError(404, "Competition not found.");
       }
 
-      const ranking = await this.resultDatabase.getDartRankingByCompetitionName(
-        name
-      );
+      const [results, athletes] = await Promise.all([
+        await this.resultDatabase.getDartResultsByCompetitionName(name),
+        await this.resultDatabase.getAthletesByCompetition(name),
+      ]);
+
+      const mappedForNameAthletes = athletes.map((athlete) => {
+        return athlete.athlete;
+      });
+
+      const uniqueAthletes = [...new Set(mappedForNameAthletes)];
+
+      const maxResults = [];
+      for (let athlete of uniqueAthletes) {
+        const personalResults = await this.resultDatabase.getAthleteResults(
+          athlete,
+          name
+        );
+        const personalValues = personalResults.map((result) => result.value);
+
+        const maxPersonalValue = personalValues.reduce((a, b) => {
+          return Math.max(a, b);
+        });
+
+        const maxPersonalResult =
+          await this.resultDatabase.getResultByAthleteAndValue(
+            athlete,
+            maxPersonalValue
+          );
+        maxResults.push(maxPersonalResult);
+      }
+
+      maxResults.sort((a, b) => {
+        if (a.value < b.value) {
+          return 1;
+        }
+        if (a.value > b.value) {
+          return -1;
+        }
+        return 0;
+      });
+
+      const ranking: Result[] = [];
+      let i = 1;
+      for (let result of maxResults) {
+        result = { ...result, position: i };
+        ranking.push(result);
+        i++;
+      }
 
       return ranking;
     } catch (error: any) {
@@ -81,9 +126,17 @@ export class ResultBusiness {
         throw new CustomError(404, "Competition not found.");
       }
 
-      const ranking = await this.resultDatabase.getDashRankingByCompetitionName(
+      const results = await this.resultDatabase.getDashResultsByCompetitionName(
         name
       );
+
+      const ranking: Result[] = [];
+      let i = 1;
+      for (let result of results) {
+        result = { ...result, position: i };
+        ranking.push(result);
+        i++;
+      }
 
       return ranking;
     } catch (error: any) {
